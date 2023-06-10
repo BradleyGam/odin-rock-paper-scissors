@@ -1,3 +1,21 @@
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let playerChoice;
+    while (playerScore < 5 || computerScore < 5) {
+        playerChoice = getPlayerChoice()
+    }
+}
+
+function getPlayerChoice() {
+    let choice = prompt("Rock, Paper, Scissors?").toLowerCase();
+    while (choice != "rock" || choice != "paper" || choice != "scissors") {
+        choice = prompt('You must enter "Rock", "Paper", or "Scissors" to play');
+    }
+    return choice;
+}
+
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock" && computerSelection == "paper") {
         return "You Lose! Paper beats Rock";

@@ -9,7 +9,7 @@ function game() {
 
 function getPlayerChoice() {
     let choice = prompt("Rock, Paper, Scissors?").toLowerCase();
-    while (choice != "rock" || choice != "paper" || choice != "scissors") {
+    while (choice != "rock" && choice != "paper" && choice != "scissors") {
         choice = prompt('You must enter "Rock", "Paper", or "Scissors" to play');
     }
     return choice;

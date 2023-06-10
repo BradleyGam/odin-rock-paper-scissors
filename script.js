@@ -2,9 +2,18 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     let playerChoice;
-    while (playerScore < 5 || computerScore < 5) {
+    while (playerScore < 5 && computerScore < 5) {
         playerChoice = getPlayerChoice()
+        let result = playRound(playerChoice, getComputerChoice());
+        if (result[4] == "L") {
+            computerScore++;
+        }
+        if (result[4] == "W") {
+            playerScore++;
+        }
+        console.log(`${result} *Player Score: ${playerScore}* *Computer Score: ${computerScore}*`);
     }
+    console.log(playerScore > computerScore ? "You Win!!!" : "You Lose, Better Luck Next Time ;(");
 }
 
 function getPlayerChoice() {
@@ -28,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
         return "You Lose! Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You win! Scissors beats Rock";
+        return "You Win! Scissors beats Rock";
     } else {
         return "Tie";
     }

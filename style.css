@@ -11,3 +11,24 @@ html, body {
   background-color: #00060a;
   color: #fafdff;
 }
+
+header {
+    text-align: center;
+}
+
+.play-controls {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.button {
+
+}

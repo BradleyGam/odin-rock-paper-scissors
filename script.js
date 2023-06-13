@@ -3,8 +3,6 @@ function game() {
     let computerScore = 0;
     let playerChoice;
     while (playerScore < 5 && computerScore < 5) {
-        playerChoice = getPlayerChoice()
-        let result = playRound(playerChoice, getComputerChoice());
         if (result[4] == "L") {
             computerScore++;
         }
@@ -16,13 +14,6 @@ function game() {
     console.log(playerScore > computerScore ? "You Win!!!" : "You Lose, Better Luck Next Time ;(");
 }
 
-function getPlayerChoice() {
-    let choice = prompt("Rock, Paper, Scissors?").toLowerCase();
-    while (choice != "rock" && choice != "paper" && choice != "scissors") {
-        choice = prompt('You must enter "Rock", "Paper", or "Scissors" to play');
-    }
-    return choice;
-}
 
 
 function playRound(playerSelection, computerSelection) {
@@ -43,6 +34,21 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+const rockBtn = document.querySelector("#rock");
+rockBtn.addEventListener("click", function() {
+  playRound("rock", getComputerChoice());
+});
+
+const paperBtn = document.querySelector("#paper");
+paperBtn.addEventListener("click", function() {
+  playRound("paper", getComputerChoice());
+});
+const scissorsBtn = document.querySelector("#scissors");
+scissorsBtn.addEventListener("click", function() {
+  playRound("scissors", getComputerChoice());
+});
+
 function getComputerChoice() {
     switch (Math.ceil(Math.random() * 3)) {
         case 1:
@@ -52,4 +58,14 @@ function getComputerChoice() {
         case 3:
             return "paper";
     }
+}
+
+
+
+function getPlayerChoice() {
+    let choice = prompt("Rock, Paper, Scissors?").toLowerCase();
+    while (choice != "rock" && choice != "paper" && choice != "scissors") {
+        choice = prompt('You must enter "Rock", "Paper", or "Scissors" to play');
+    }
+    return choice;
 }

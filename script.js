@@ -29,7 +29,6 @@ function playRound(playerSelection, computerSelection) {
 function game(buttonSelection) {
     let result = playRound(`${buttonSelection}`, getComputerChoice());
     rounds++;
-    scoreContainer.textContent = result;
     if (playerScore == 5 || computerScore == 5) {
         endGame();
     }
@@ -44,7 +43,6 @@ function endGame() {
     }
 }
 
-const scoreContainer = document.querySelector("#score");
 
 
 const rockBtn = document.querySelector("#rock");

@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let rounds = 0;
+let gameEnded = false;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock" && computerSelection == "paper") {
@@ -27,24 +28,33 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(buttonSelection) {
-    let result = playRound(`${buttonSelection}`, getComputerChoice());
+    if (gameEnded) {
+        return;
+    }
+    result.textContent = playRound(`${buttonSelection}`, getComputerChoice());
     rounds++;
+    score.textContent = `Rounds: ${rounds} | Score: ${playerScore}:${computerScore}`;
     if (playerScore == 5 || computerScore == 5) {
         endGame();
     }
 }
 
 function endGame() {
+    scoreboard.appendChild(finish);
+    gameEnded = true;
     if (playerScore == 5) {
-        console.log("Player Wins!");
+        finish.textContent = "CONGRATULATIONS YOU WON!";
     }
     if (computerScore == 5) {
-        console.log("Computer Wins!");
+        finish.textContent = "Oh no you lost.  ;(";
     }
 }
 
-
-
+const finish = document.createElement("div");
+const scoreboard = document.querySelector("#scoreboard");
+const score = document.querySelector("#score");
+const result = document.querySelector("#result");
+const opponentImage= document.querySelector("#opponent");
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
@@ -55,10 +65,13 @@ scissorsBtn.addEventListener("click", () => game("scissors"));
 function getComputerChoice() {
     switch (Math.ceil(Math.random() * 3)) {
         case 1:
+            opponentImage.src = "images/RockOpponent.png";
             return "rock";
         case 2:
+            opponentImage.src = "images/ScissorsOpponent.png";
             return "scissors";
         case 3:
+            opponentImage.src = "images/PaperOpponent.png";
             return "paper";
     }
 }
